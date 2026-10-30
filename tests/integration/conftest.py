@@ -21,14 +21,14 @@ ROSBRIDGE_PORT = 9090
 _DOCKERFILE_MAP = {
     "melodic": "Dockerfile.ros1-melodic",
     "noetic": "Dockerfile.ros1-noetic",
-    "humble": "Dockerfile.ros2-humble",
+    "loong": "Dockerfile.agiros-loong",
     "jazzy": "Dockerfile.ros2-jazzy",
 }
 
 _CONTAINER_NAME_MAP = {
     "melodic": "integration-ros-melodic",
     "noetic": "integration-ros-noetic",
-    "humble": "integration-ros2-humble",
+    "loong": "integration-agiros-loong",
     "jazzy": "integration-ros2-jazzy",
 }
 
@@ -56,9 +56,9 @@ def _wait_for_rosbridge(port: int = ROSBRIDGE_PORT, timeout: float = 30) -> None
 def pytest_addoption(parser):
     parser.addoption(
         "--ros-distro",
-        default="humble",
+        default="loong",
         choices=list(_DOCKERFILE_MAP.keys()),
-        help="ROS distro to test against (default: humble)",
+        help="ROS distro to test against (default: loong / AGIROS)",
     )
     parser.addoption(
         "--skip-compose",

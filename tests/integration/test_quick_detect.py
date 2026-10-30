@@ -7,7 +7,7 @@ Usage (assumes rosbridge may or may not be running on port 9090):
 Scenarios:
   - No rosbridge running    → DetectionError (expected)
   - ROS 1 Noetic running    → ROS1, prefix=/rosapi
-  - ROS 2 Humble running    → ROS2, prefix=/rosapi
+  - AGIROS loong running    → ROS2, prefix=/rosapi
   - ROS 2 Jazzy running     → ROS2, prefix=/rosapi_node
 """
 

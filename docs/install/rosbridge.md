@@ -8,6 +8,14 @@ Rosbridge runs on the **robot's machine** (wherever ROS is running). It provides
 
 ## Install rosbridge_server
 
+For AGIROS loong:
+```bash
+# Update package list
+sudo apt update
+# Install rosbridge for AGIROS loong
+sudo apt install agiros-loong-rosbridge-server
+```
+
 For ROS 2 Jazzy:
 ```bash
 # Update package list
@@ -29,9 +37,15 @@ sudo apt install ros-<your-distro>-rosbridge-server
 > Using ROS 1? See [ROS 1 instructions](#ros-1-end-of-life) at the bottom of this page.
 
 ## Launch rosbridge
-`source` your ROS workspace first to ensure that the rosbridge has access to your ROS system.
+`source` your ROS environment first to ensure that the rosbridge has access to your ROS system.
 
 ```bash
+# AGIROS loong
+source /opt/agiros/loong/setup.bash
+agiros launch rosbridge_server rosbridge_websocket_launch.xml
+```
+```bash
+# ROS 2
 ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 ```
 

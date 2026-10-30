@@ -19,14 +19,14 @@ pytestmark = [pytest.mark.integration]
 _DISTRO_TO_VERSION = {
     "melodic": RosVersion.ROS1,
     "noetic": RosVersion.ROS1,
-    "humble": RosVersion.ROS2,
+    "loong": RosVersion.ROS2,
     "jazzy": RosVersion.ROS2,
 }
 
 _DISTRO_TO_PREFIX = {
     "melodic": "/rosapi",
     "noetic": "/rosapi",
-    "humble": "/rosapi",
+    "loong": "/rosapi",
     "jazzy": "/rosapi",
 }
 

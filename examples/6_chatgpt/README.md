@@ -386,13 +386,13 @@ curl https://your-domain.ngrok-free.app/mcp
 wsl -- ros2 node list
 
 # Test ROS installation (macOS Docker)
-docker exec ros2-turtlesim ros2 node list
+docker exec ros2-turtlesim agiros node list
 
 # Test rosbridge (WSL)
 wsl -- ros2 topic list
 
 # Test rosbridge (macOS Docker)
-docker exec ros2-turtlesim ros2 topic list
+docker exec ros2-turtlesim agiros topic list
 
 # Check ngrok status
 ngrok api tunnels list

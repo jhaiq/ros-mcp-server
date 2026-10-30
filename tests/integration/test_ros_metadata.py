@@ -24,7 +24,7 @@ import pytest
 from fastmcp import FastMCP
 
 from ros_mcp.resources import register_all_resources
-from ros_mcp.utils.rosapi_types import RosVersion, get_ros_version
+from ros_mcp.utils.rosapi_types import RosVersion, get_distro, get_ros_version  # noqa: F401
 from ros_mcp.utils.websocket import WebSocketManager
 
 pytestmark = [pytest.mark.integration]
@@ -198,8 +198,9 @@ class TestActionsDetails:
             assert isinstance(data["action_errors"], list)
 
     @pytest.mark.skipif(
-        "get_ros_version() != RosVersion.ROS2",
-        reason="rosapi action_servers inspection is a ROS 2 feature (see #320)",
+        "get_ros_version() != RosVersion.ROS2 or get_distro() == 'loong'",
+        reason="rosapi action_servers inspection is a ROS 2 feature (see #320); "
+        "AGIROS loong rosapi 2.0.0 lacks the /rosapi/action_servers service",
     )
     def test_rotate_absolute_listed(self, resources):
         """turtlesim's /turtle1/rotate_absolute action is discovered on ROS 2."""

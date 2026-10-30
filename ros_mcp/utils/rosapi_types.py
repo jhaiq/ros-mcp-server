@@ -215,7 +215,7 @@ def get_ros_version() -> RosVersion:
 
 
 def get_distro() -> str:
-    """Return the detected ROS distro name (e.g. 'noetic', 'humble').
+    """Return the detected ROS distro name (e.g. 'noetic', 'humble', 'loong').
 
     May be empty on ROS 1 if distro detection failed.
     """
@@ -238,7 +238,7 @@ def rosapi_service(service_name: str) -> str:
 
     Example::
 
-        rosapi_service("nodes")  # → "/rosapi/nodes" on Humble
+        rosapi_service("nodes")  # → "/rosapi/nodes" on Humble / loong
         # → "/rosapi_node/nodes" on Jazzy
     """
     return _resolver.get_service(service_name)

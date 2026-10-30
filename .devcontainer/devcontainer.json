@@ -1,5 +1,5 @@
 {
-  "name": "ROS2 Humble Dev",
+  "name": "AGIROS loong Dev",
   "build": { "dockerfile": "Dockerfile" },
   "workspaceFolder": "/home/vscode/workspace",
   "mounts": [

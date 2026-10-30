@@ -142,7 +142,7 @@ detect_ros_version()
 **Response:**
 The response includes:
 - `version`: ROS version (1 or 2)
-- `distro`: Distribution name (e.g., "humble", "noetic", "melodic")
+- `distro`: Distribution name (e.g., "loong", "humble", "noetic", "melodic")
 
 **Note:** This tool requires an active rosbridge connection. Make sure you've connected first using `connect_to_robot()`.
 

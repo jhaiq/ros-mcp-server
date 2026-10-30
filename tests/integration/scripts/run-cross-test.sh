@@ -3,8 +3,8 @@
 # The test should FAIL because the detector sees the real distro.
 #
 # Usage: ./tests/integration/scripts/run-cross-test.sh <real_distro> <fake_distro>
-# Example: ./tests/integration/scripts/run-cross-test.sh noetic humble
-#   → Starts Noetic, runs pytest with --ros-distro humble → should FAIL
+# Example: ./tests/integration/scripts/run-cross-test.sh noetic loong
+#   → Starts Noetic, runs pytest with --ros-distro loong → should FAIL
 
 set -e
 cd "$(git rev-parse --show-toplevel)"
@@ -22,14 +22,14 @@ fi
 declare -A DOCKERFILES=(
     [melodic]="Dockerfile.ros1-melodic"
     [noetic]="Dockerfile.ros1-noetic"
-    [humble]="Dockerfile.ros2-humble"
+    [loong]="Dockerfile.agiros-loong"
     [jazzy]="Dockerfile.ros2-jazzy"
 )
 
 declare -A CONTAINERS=(
     [melodic]="integration-ros-melodic"
     [noetic]="integration-ros-noetic"
-    [humble]="integration-ros2-humble"
+    [loong]="integration-agiros-loong"
     [jazzy]="integration-ros2-jazzy"
 )
 
@@ -37,7 +37,7 @@ DOCKERFILE="${DOCKERFILES[$REAL_DISTRO]}"
 CONTAINER="${CONTAINERS[$REAL_DISTRO]}"
 
 if [ -z "$DOCKERFILE" ]; then
-    echo "Unknown distro: $REAL_DISTRO (valid: melodic, noetic, humble, jazzy)"
+    echo "Unknown distro: $REAL_DISTRO (valid: melodic, noetic, loong, jazzy)"
     exit 1
 fi
 

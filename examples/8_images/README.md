@@ -66,10 +66,12 @@ After the container is running with `cam2image`, continue to **Step 2** to verif
 
 ### Required for All Camera Types
 
-Install the ROS image transport plugins package (replace `${ROS_DISTRO}` with your current ROS 2 distribution, for example `humble` or `jazzy`):
+Install the ROS image transport plugins package (replace `${ROS_DISTRO}` with your current ROS 2 distribution, for example `humble` or `jazzy`; on AGIROS loong the package name is `agiros-loong-image-transport-plugins`):
 
 ```bash
 sudo apt install ros-${ROS_DISTRO}-image-transport-plugins
+# On AGIROS loong:
+sudo apt install agiros-loong-image-transport-plugins
 ```
 
 ### For Synthetic Camera (image_tools)

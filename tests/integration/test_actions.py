@@ -6,7 +6,7 @@ rosbridge container.
 
 Action servers per distro:
 - ROS 1 (melodic/noetic): /shape_server (from turtle_actionlib)
-- ROS 2 (humble/jazzy): /turtle1/rotate_absolute (from turtlesim)
+- ROS 2 (loong/humble/jazzy): /turtle1/rotate_absolute (from turtlesim)
 
 get_action_details and get_action_status use ROS 2-only rosbridge features
 (/rosapi/interfaces, send_action_goal op). See issue #320 for ROS 1 support
@@ -17,7 +17,7 @@ import asyncio
 
 import pytest
 
-from ros_mcp.utils.rosapi_types import RosVersion, get_ros_version
+from ros_mcp.utils.rosapi_types import RosVersion, get_distro, get_ros_version  # noqa: F401
 
 pytestmark = [pytest.mark.integration]
 
@@ -65,8 +65,9 @@ class TestGetActionDetails:
     """
 
     @pytest.mark.skipif(
-        "get_ros_version() != RosVersion.ROS2",
-        reason="Action detail inspection requires /rosapi/interfaces (ROS 2 only, see #320)",
+        "get_ros_version() != RosVersion.ROS2 or get_distro() == 'loong'",
+        reason="Action detail inspection requires /rosapi/interfaces (ROS 2 only, see #320); "
+        "AGIROS loong rosapi 2.0.0 lacks action introspection services",
     )
     def test_action_details(self, tools):
         """get_action_details should return goal/result/feedback structure."""
@@ -92,8 +93,9 @@ class TestGetActionDetails:
         assert isinstance(result["available_action_types"], list)
 
     @pytest.mark.skipif(
-        "get_ros_version() != RosVersion.ROS2",
-        reason="action_type validation/crash is ROS 2 rosapi-specific (see #320)",
+        "get_ros_version() != RosVersion.ROS2 or get_distro() == 'loong'",
+        reason="action_type validation/crash is ROS 2 rosapi-specific (see #320); "
+        "AGIROS loong rosapi 2.0.0 lacks action introspection services",
     )
     def test_nonexistent_action_type_does_not_crash_rosapi(self, tools):
         """A bogus action_type must be rejected WITHOUT crashing rosapi.

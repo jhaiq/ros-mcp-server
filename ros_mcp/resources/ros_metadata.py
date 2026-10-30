@@ -119,22 +119,28 @@ def register_ros_metadata_resources(mcp, ws_manager: WebSocketManager):
                 metadata["errors"].append(f"Failed to get nodes: {str(e)}")
 
             # Get parameters (ROS 2 only)
-            try:
-                params_message = {
-                    "op": "call_service",
-                    "service": rosapi_service("get_param_names"),
-                    "type": rosapi_type("GetParamNames"),
-                    "args": {},
-                    "id": "get_parameters_request",
-                }
-                with ws_manager:
-                    response = ws_manager.request(params_message)
-                    values = _safe_get_values(response)
-                    if values is not None:
-                        metadata["parameters"] = values.get("names", [])
-            except Exception:
-                # Parameters might not be available in ROS1 or if service doesn't exist
-                pass
+            # AGIROS loong (rosapi 2.0.0): calling /rosapi/get_param_names
+            # deadlocks the rosapi service callback and wedges the whole
+            # rosbridge — every later request on any connection times out.
+            # This enumeration is best-effort, so skip it on loong until the
+            # upstream fix lands.
+            if get_distro() != "loong":
+                try:
+                    params_message = {
+                        "op": "call_service",
+                        "service": rosapi_service("get_param_names"),
+                        "type": rosapi_type("GetParamNames"),
+                        "args": {},
+                        "id": "get_parameters_request",
+                    }
+                    with ws_manager:
+                        response = ws_manager.request(params_message)
+                        values = _safe_get_values(response)
+                        if values is not None:
+                            metadata["parameters"] = values.get("names", [])
+                except Exception:
+                    # Parameters might not be available in ROS1 or if service doesn't exist
+                    pass
 
             # Add summary counts
             metadata["summary"] = {

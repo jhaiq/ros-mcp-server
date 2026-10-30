@@ -6,7 +6,7 @@ services:
     container_name: ros2-turtlesim
     environment:
       - DISPLAY=${DISPLAY}
-      - ROS_DISTRO=humble
+      - ROS_DISTRO=loong
       - QT_X11_NO_MITSHM=1
     volumes:
       # Mount launch file into the container
@@ -17,4 +17,4 @@ services:
       - "9090:9090"
     stdin_open: true
     tty: true
-    command: ["ros2", "launch", "/ros2_ws/launch/launch_turtlesim.launch.py"]
+    command: ["bash", "-c", "source /opt/agiros/loong/setup.bash && agiros launch /ros2_ws/launch/launch_turtlesim.launch.py"]

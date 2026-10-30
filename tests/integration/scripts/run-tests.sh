@@ -2,7 +2,7 @@
 # Run integration tests against a specific ROS distro.
 # Usage: ./tests/integration/scripts/run-tests.sh <distro> [module]
 # Example: ./tests/integration/scripts/run-tests.sh noetic
-# Example: ./tests/integration/scripts/run-tests.sh humble topics
+# Example: ./tests/integration/scripts/run-tests.sh loong topics
 
 set -e
 cd "$(git rev-parse --show-toplevel)"
@@ -13,7 +13,7 @@ if [ -z "${1:-}" ]; then
         | grep -v quick_detect \
         | tr '\n' ', ' | sed 's/,$//')
     echo "Usage: $0 <distro> [module]"
-    echo "Distros: melodic, noetic, humble, jazzy"
+    echo "Distros: melodic, noetic, loong, jazzy"
     echo "Modules: $MODULES"
     exit 1
 fi
@@ -25,14 +25,14 @@ COMPOSE="tests/integration/docker-compose.yml"
 declare -A DOCKERFILES=(
     [melodic]="Dockerfile.ros1-melodic"
     [noetic]="Dockerfile.ros1-noetic"
-    [humble]="Dockerfile.ros2-humble"
+    [loong]="Dockerfile.agiros-loong"
     [jazzy]="Dockerfile.ros2-jazzy"
 )
 
 declare -A CONTAINERS=(
     [melodic]="integration-ros-melodic"
     [noetic]="integration-ros-noetic"
-    [humble]="integration-ros2-humble"
+    [loong]="integration-agiros-loong"
     [jazzy]="integration-ros2-jazzy"
 )
 
@@ -41,7 +41,7 @@ CONTAINER="${CONTAINERS[$DISTRO]}"
 
 if [ -z "$DOCKERFILE" ]; then
     echo "Unknown distro: $DISTRO"
-    echo "Valid options: melodic, noetic, humble, jazzy"
+    echo "Valid options: melodic, noetic, loong, jazzy"
     exit 1
 fi
 

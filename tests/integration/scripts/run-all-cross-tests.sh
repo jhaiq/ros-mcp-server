@@ -25,7 +25,7 @@ run_check() {
 # Correct expectations — all should PASS
 run_check melodic ROS1
 run_check noetic  ROS1
-run_check humble  ROS2
+run_check loong   ROS2
 run_check jazzy   ROS2
 
 echo ""

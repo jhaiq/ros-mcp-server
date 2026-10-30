@@ -1,0 +1,36 @@
+# AGIROS loong (ROS 2 Humble-generation compatible) test container.
+# Built from the official 25.12 LTS apt repo — same package source as the
+# docker.agiros.org.cn/agiros/agiros-loong-ubuntu-* images, which can be used
+# as FROM instead when the AGIROS docker registry is reachable.
+FROM ubuntu:22.04
+
+ENV ROS_DISTRO=loong
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive
+ENV QT_QPA_PLATFORM=offscreen
+SHELL ["/bin/bash", "-c"]
+
+# Add the official AGIROS 25.12 LTS repo (root-user variant of setup-client.sh)
+RUN apt-get update && apt-get install -y --no-install-recommends curl gnupg \
+    && curl -fsSL http://repo.agiros.org.cn/debrepo/agiros/ubuntu2204lts/2512/agiros.gpg \
+       | gpg --dearmor -o /usr/share/keyrings/agiros-archive-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/agiros-archive-keyring.gpg] http://repo.agiros.org.cn/debrepo/agiros/ubuntu2204lts/2512 jammy main" \
+       > /etc/apt/sources.list.d/agiros.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+       agiros-loong-rosbridge-suite \
+       agiros-loong-turtlesim \
+       agiros-loong-ros2launch \
+       agiros-loong-ros2run \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /ros2_ws
+
+COPY ros2_launch.py /ros2_ws/ros2_launch.py
+COPY entrypoint-loong.sh /ros2_ws/entrypoint.sh
+RUN chmod +x /ros2_ws/entrypoint.sh
+
+EXPOSE 9090
+
+CMD ["/ros2_ws/entrypoint.sh"]

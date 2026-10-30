@@ -106,7 +106,7 @@ Once inside the container, you can manually launch turtle teleop to control the 
 
 ```bash
 source /opt/ros/${ROS_DISTRO}/setup.bash
-ros2 run turtlesim turtle_teleop_key
+agiros run turtlesim turtle_teleop_key
 ```
 
 This will allow you to use arrow keys or WASD to manually move the turtle around the turtlesim window.
@@ -264,10 +264,10 @@ docker exec -it ros2-turtlesim bash
 source /opt/ros/${ROS_DISTRO}/setup.bash
 
 # Start turtlesim in one terminal
-ros2 run turtlesim turtlesim_node
+agiros run turtlesim turtlesim_node
 
 # In another terminal, start the teleop node
-ros2 run turtlesim turtle_teleop_key
+agiros run turtlesim turtle_teleop_key
 ```
 
 ## Testing Turtlesim
@@ -286,13 +286,13 @@ docker exec -it ros2-turtlesim bash
 source /opt/ros/${ROS_DISTRO}/setup.bash
 
 # List all topics
-ros2 topic list
+agiros topic list
 
 # Echo turtle position
-ros2 topic echo /turtle1/pose
+agiros topic echo /turtle1/pose
 
 # Echo turtle velocity commands
-ros2 topic echo /turtle1/cmd_vel
+agiros topic echo /turtle1/cmd_vel
 ```
 
 ### ROS Bridge WebSocket Server

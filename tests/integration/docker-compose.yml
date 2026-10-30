@@ -2,7 +2,7 @@ services:
   ros:
     build:
       context: ./docker
-      dockerfile: ${ROS_DOCKERFILE:-Dockerfile.ros2-humble}
+      dockerfile: ${ROS_DOCKERFILE:-Dockerfile.agiros-loong}
     container_name: ${ROS_CONTAINER_NAME:-ros-mcp-test}
     ports:
       - "9090:9090"

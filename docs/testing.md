@@ -56,11 +56,11 @@ pytest tests/installation/test_source_install.py::test_uv_source_python_versions
 Before testing, ensure you have:
 
 1. **ROS installed** (ROS 1 or ROS 2)
-   - ROS 2: `which ros2`
+   - ROS 2: `which ros2` (on AGIROS loong: `which agiros`)
    - ROS 1: TODO
 
 2. **Turtlesim package installed**
-   - ROS 2: `ros2 pkg list | grep turtlesim`
+   - ROS 2: `ros2 pkg list | grep turtlesim` (on AGIROS loong: `agiros pkg list | grep turtlesim`)
    - ROS 1: TODO
 
 3. **Rosbridge server installed**
@@ -366,6 +366,7 @@ Access resources to get comprehensive system information:
 
 - **ROS version detection fails:**
   - Ensure ROS environment is sourced
+  - For AGIROS loong: `source /opt/agiros/loong/setup.bash`
   - For ROS 2: `source /opt/ros/<distro>/setup.bash`
   - For ROS 1: `source /opt/ros/<distro>/setup.bash`
 

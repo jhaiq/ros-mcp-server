@@ -6,20 +6,20 @@
 set -e
 cd "$(git rev-parse --show-toplevel)"
 
-DISTRO="${1:?Usage: $0 <melodic|noetic|humble|jazzy>}"
+DISTRO="${1:?Usage: $0 <melodic|noetic|loong|jazzy>}"
 COMPOSE="tests/integration/docker-compose.yml"
 
 declare -A DOCKERFILES=(
     [melodic]="Dockerfile.ros1-melodic"
     [noetic]="Dockerfile.ros1-noetic"
-    [humble]="Dockerfile.ros2-humble"
+    [loong]="Dockerfile.agiros-loong"
     [jazzy]="Dockerfile.ros2-jazzy"
 )
 
 declare -A CONTAINERS=(
     [melodic]="integration-ros-melodic"
     [noetic]="integration-ros-noetic"
-    [humble]="integration-ros2-humble"
+    [loong]="integration-agiros-loong"
     [jazzy]="integration-ros2-jazzy"
 )
 
@@ -28,7 +28,7 @@ CONTAINER="${CONTAINERS[$DISTRO]}"
 
 if [ -z "$DOCKERFILE" ]; then
     echo "Unknown distro: $DISTRO"
-    echo "Valid options: melodic, noetic, humble, jazzy"
+    echo "Valid options: melodic, noetic, loong, jazzy"
     exit 1
 fi
 

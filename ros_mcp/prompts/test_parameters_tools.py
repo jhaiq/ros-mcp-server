@@ -40,7 +40,7 @@ Before testing parameter tools, ensure you have a working ROS 2 setup:
    ```
    detect_ros_version()
    ```
-   This should return ROS 2 (e.g., "humble", "foxy", "iron"). Parameter tools only work with ROS 2, not ROS 1.
+   This should return ROS 2 (e.g., "loong", "humble", "foxy", "iron"). Parameter tools only work with ROS 2, not ROS 1.
 
 2. **Check available nodes:**
    ```

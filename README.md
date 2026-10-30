@@ -24,7 +24,7 @@ ROS-MCP-Server connects large language models (such as Claude, GPT, and Gemini) 
 - **Full context** → publish & subscribe to topics, call services & actions, set parameters, read sensor data, and monitor robot state in real time.
 - **Deep ROS understanding** → guides the LLM to discover available topics, services, actions, and their types (including custom ones) — enabling it to use them with the right syntax without manual configuration.
 - **Works with any MCP client** → built on the open [MCP standard](https://modelcontextprotocol.io/), supporting Claude Code, Codex CLI, Gemini CLI, Claude Desktop, ChatGPT, Cursor, and more.
-- **Works across ROS versions** → compatible across ROS 2 (Jazzy, Humble, and others) and ROS 1 distros.
+- **Works across ROS versions** → compatible across ROS 2 (Jazzy, Humble, and others), AGIROS loong, and ROS 1 distros.
 
 ---
 ## 🎥 Examples in Action  

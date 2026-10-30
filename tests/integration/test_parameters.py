@@ -8,7 +8,7 @@ Parameter semantics differ across ROS versions:
 - ROS 1 (melodic/noetic): global parameter server, slash-separated names
   (e.g. /turtlesim/background_r). The test seeds a known parameter via
   set_parameter before reading.
-- ROS 2 (humble/jazzy): per-node parameters keyed "node:name" through
+- ROS 2 (loong/humble/jazzy): per-node parameters keyed "node:name" through
   rosbridge (e.g. /turtlesim:background_r). turtlesim populates background_r/g/b
   on launch.
 

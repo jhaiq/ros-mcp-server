@@ -16,7 +16,7 @@ By the end of this tutorial, you'll be able to:
 
 Before starting this tutorial, make sure you have:
 
-✅ **Any version of ROS installed** (ROS1 Noetic, ROS2 Humble, or ROS2 Jazzy)  
+✅ **Any version of ROS installed** (ROS1 Noetic, ROS2 Humble/Jazzy, or AGIROS loong)  
 ✅ **Basic familiarity with terminal/command line**  
 ✅ **The ROS MCP Server installed** (see [Installation Guide](../../docs/install/installation.md) for setup instructions)
 
@@ -50,18 +50,22 @@ You should see a window appear with a turtle in the center of a blue background.
 </details>
 
 <details>
-<summary><strong>ROS2 (e.g., Humble, Jazzy)</strong></summary>
+<summary><strong>ROS2 (e.g., AGIROS loong, Humble, Jazzy)</strong></summary>
 
 ### Launch Turtlesim
 
 1. **Source your ROS2 environment:**
    ```bash
-   source /opt/ros/humble/setup.bash  # or /opt/ros/jazzy/setup.bash
+   # AGIROS loong
+   source /opt/agiros/loong/setup.bash
+   # or ROS 2:
+   source /opt/agiros/loong/setup.bash  # AGIROS loong (or: /opt/ros/humble/setup.bash, /opt/ros/jazzy/setup.bash)
    ```
 
 2. **Launch Turtlesim:**
    ```bash
-   ros2 run turtlesim turtlesim_node
+   # AGIROS loong uses the agiros CLI (same arguments as ros2)
+   agiros run turtlesim turtlesim_node   # or: ros2 run turtlesim turtlesim_node
    ```
 
 You should see a window appear with a turtle in the center of a blue background.
@@ -98,11 +102,11 @@ rostopic echo /turtle1/cmd_vel
 </details>
 
 <details>
-<summary><strong>ROS2 (e.g., Humble, Jazzy)</strong></summary>
+<summary><strong>ROS2 (e.g., AGIROS loong, Humble, Jazzy)</strong></summary>
 
 ```bash
 # Source ROS2 environment (adjust for your version)
-source /opt/ros/humble/setup.bash  # or /opt/ros/jazzy/setup.bash
+source /opt/agiros/loong/setup.bash  # AGIROS loong (or: /opt/ros/humble/setup.bash, /opt/ros/jazzy/setup.bash)
 
 # List all topics
 ros2 topic list
@@ -132,7 +136,7 @@ rosservice info /turtle1/set_pen
 </details>
 
 <details>
-<summary><strong>ROS2 (e.g., Humble, Jazzy)</strong></summary>
+<summary><strong>ROS2 (e.g., AGIROS loong, Humble, Jazzy)</strong></summary>
 
 ```bash
 # List all services

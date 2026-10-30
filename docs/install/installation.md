@@ -50,11 +50,16 @@ Install and launch rosbridge on the machine where ROS is running. See the [Step 
 # 2.1. Install Rosbridge
 sudo apt update
 sudo apt install ros-<your ros distro>-rosbridge-server
+# On AGIROS loong, the package and CLI names differ:
+#   sudo apt install agiros-loong-rosbridge-server
 ```
 ```bash
 # 2.2. Launch Rosbridge
 source /<path to ros WS>/install/setup.bash
 ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+# On AGIROS loong:
+#   source /opt/agiros/loong/setup.bash
+#   agiros launch rosbridge_server rosbridge_websocket_launch.xml
 ```
 
 ## Step 3: Connect to Your Robot

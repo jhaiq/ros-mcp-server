@@ -5,7 +5,7 @@
 set -e
 cd "$(git rev-parse --show-toplevel)"
 
-DISTROS=(melodic noetic humble jazzy)
+DISTROS=(melodic noetic loong jazzy)
 PASSED=()
 FAILED=()
 

@@ -4,6 +4,8 @@
 
 This guide provides template launch files for developers to integrate their robots with the ROS-MCP Server. These templates demonstrate how to combine your robot's existing launch files with rosbridge for MCP communication.
 
+> **AGIROS loong:** the launch files below work unchanged — substitute `agiros` for `ros2` in the commands (e.g. `agiros launch ros_mcp_rosbridge.launch.py`) and source `/opt/agiros/loong/setup.bash`.
+
 ## Template Launch Files
 
 ### `ros_mcp_rosbridge.launch.py` - Basic Rosbridge Template

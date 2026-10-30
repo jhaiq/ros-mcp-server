@@ -68,12 +68,12 @@ We use **Ruff** for both linting and formatting. CI requires:
 
 ## Optional: Using Devcontainer
 
-The devcontainer provides a stable testing platform with ROS2 humble pre-installed as well as an environment to test the MCP server in http transport. (stdio transport is not compatible with the devcontainer)
+The devcontainer provides a stable testing platform with AGIROS loong (ROS 2 Humble-generation compatible) pre-installed as well as an environment to test the MCP server in http transport. (stdio transport is not compatible with the devcontainer)
 
 1. Install [VSCode](https://code.visualstudio.com/) and the **Remote - Containers** extension.  
 2. Open the `ros-mcp-server` repository in VSCode.  
 3. When prompted, **reopen in container**.  
-   - The container includes ROS2 Humble, Python 3.10+, `ruff`, `pre-commit`, `uv`, and `git`.  
+   - The container includes AGIROS loong, Python 3.10+, `ruff`, `pre-commit`, `uv`, and `git`.  
    - The repository is mounted at `/root/workspace`.  
    - **Note for GUI apps** (`turtlesim`, `rviz`, `Gazebo`): 
      Ensure the container can access your host X server by running the following command once on the host:
